@@ -47,17 +47,7 @@ class Stone(Button):
             color=color.color(0, 0, random.uniform(.9, 1.0)),
             highlight_color=color.white,
         )
-
-class Logo(Button):
-    def __init__(self, position=(0,0,0)):
-        super().__init__(parent=scene,
-            position=position,
-            model='cube',
-            origin_y=0,
-            texture='computerware',
-            color=color.color(0, 0, random.uniform(.9, 1.0)),
-            highlight_color=color.white,
-        )
+        
 for z in range(10):
     for x in range(10):
         grass = Grass(position=(x,10,z))
@@ -109,11 +99,6 @@ def input(key):
         f.write('stone')
         # close the file
         f.close()
-    if key == '4':
-        f = open('block.txt', 'w')
-        f.write('logo')
-        # close the file
-        f.close()
     if key == 'left mouse down':
         f = open('block.txt', 'r')
         block_type = f.read()
@@ -126,8 +111,6 @@ def input(key):
             Grass(position=hit_info.entity.position + hit_info.normal)
         if hit_info.hit and block_type == 'stone':
             Stone(position=hit_info.entity.position + hit_info.normal)
-        if hit_info.hit and block_type == 'logo':
-            Logo(position=hit_info.entity.position + hit_info.normal)
     if key == 'right mouse down' and mouse.hovered_entity:
         destroy(mouse.hovered_entity)
 

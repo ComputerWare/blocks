@@ -113,7 +113,6 @@ e.position = (3,11,0)
 
 def pause_input(key):
     if key == 'escape':
-        destroy(hand)
         chunk_data.close()
         editor_camera.enabled = not editor_camera.enabled
 
